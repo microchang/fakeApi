@@ -47,7 +47,6 @@ authhandle.get('/login/pc/callback/wechat',async (ctx, next) => {
 
 /* 微信公众号自定义菜单与消息回复 */
 //此处应该分离出一个单独的授权服务器方便全局缓存token，或最少单独成一个模块。demo方便起见，不做缓存处理和错误情况处理。
-
 authhandle.get('/Verification/wechat', (ctx, next) => {
   const {signature, timestamp, nonce, echostr};
   //处理加密以后返回，方便微信服务器进行验证。
@@ -64,7 +63,7 @@ authhandle.get('/Verification/wechat', (ctx, next) => {
 
 
 /* 微信浏览器js-sdk授权 */
-//token情况和微信浏览器对公众号授权类似（或者说应该从同一个token服务器获取，此处demo方便起见未做此处理）
+//token情况和微信浏览器对公众号授权类似,需要一个公共token服务器全局缓存
 
 authhandle.get('/jssdk/wechat',async (ctx, next) => {
   const tkoenObj =await axios.get(`https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APPID}&secret=${SECRET}`);
