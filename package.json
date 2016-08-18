@@ -1,0 +1,26 @@
+{
+  "name": "fakeapi",
+  "version": "1.0.0",
+  "description": "fake  i am a api docs.",
+  "main": "index.js",
+  "scripts": {
+    "fe":"webpack -w & webpack-dev-server",
+    "be":"supervisor ./be/babel.index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microchang/fakeApi.git"
+  },
+  "keywords": [
+    "fake",
+    "api",
+    "mock"
+  ],
+  "author": "microchang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/microchang/fakeApi/issues"
+  },
+  "homepage": "https://github.com/microchang/fakeApi#readme"
+}

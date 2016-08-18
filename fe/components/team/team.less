@@ -1,0 +1,105 @@
+@import "../../styles/mixins/mixins.less";
+.fk-team {
+  height: 100%;
+  position: relative;
+  font-size: 18px;
+  .warp {
+    height: 100%;
+    background-color: @div;
+    opacity: 0.5;
+  }
+  .body {
+
+    padding: 20px 0;
+    background-color: white;
+    position: absolute;
+    min-height: 400px;
+    height: 50%;
+    min-width: 200px;
+    width: 50%;
+    top: -100%;
+    left: 25%;
+    box-shadow: 0 0 20px 1px @div;
+    .row {
+      width: 100%;
+      min-height: 50px;
+      margin: 10px 0;
+      line-height: 50px;
+      label {
+        text-align: center;
+        display: inline-block;
+        min-width: 50px;
+        width: 40%;
+        height: 100%;
+        margin: auto;
+      }
+      input {
+        width: 50%;
+        height: 30px;
+       
+        padding: 0 10px;
+      }
+      .members {
+        width: 50%;
+        display: inline-block;
+        
+        .member {
+          // float: right;
+          // display: inline-block;
+          height: 30px;
+          line-height: 30px;
+          background-color: @greenLight;
+          border-radius: 10px;
+          margin: 10px;
+          padding: 0 10px;
+          font-size: 16px;
+          color: @blue;
+          clear: both;
+          &:hover {
+            color: @greenLight;
+            background-color: @blue;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .add-member{
+          width: 40%;
+      }
+      .add-member-btn{
+        border: 1px solid @active;
+          width: 10%;
+          background-color: @active;
+          color:white;
+            cursor: pointer;
+      }
+    }
+
+    .control{
+      height: 50px;
+      margin: 50px 0;
+      display: flex;
+      justify-content:  space-around;
+      input{
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+        text-align: cneter;
+        border: none;
+      }
+      .save{
+        background-color: steelblue;
+        color:white;
+      }
+      .quit{
+        background-color: @background;
+      }
+    } 
+  }
+  .body-ready {
+    top: 25%;
+  }
+  .fall-down {
+    animation: fall-and-shake 1s;
+  }
+}

@@ -1,0 +1,36 @@
+@import "../../styles/mixins/mixins.less";
+
+.ce-nav{
+   position: flex;
+   height: auto;
+   width: 150px;
+   background: white;
+  
+   min-height: 600px;
+   border:1px solid @div;
+ 
+   margin-left: 20px;
+   .module{
+       width: inherit;
+       height: auto;
+       margin: 10px 0;
+       text-align: center;
+       font-size: 18px;
+       .name{
+           text-align: left;
+          color:@gray;
+           font-size: 16px;
+       }
+       .columns{
+           .col{
+               cursor: pointer;
+               margin: 10px 0;
+               height: 40px;
+               line-height: 40px;
+               &:hover{
+                   background-color: @green;
+               }
+           }
+       }
+   }
+}

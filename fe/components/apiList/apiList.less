@@ -1,0 +1,41 @@
+@import "../../styles/mixins/mixins.less";
+.fk-api-list {
+  font-size: 18px;
+  .brief {
+    margin-top: 50/@base;
+    height: 80/@base;
+    line-height: 80/@base;
+    background-color:black;
+
+    .name{
+      color:white;
+
+    }
+    .add{
+      float: right;
+      margin:auto;
+      .size(200/@base,80/@base);
+      background-color: green;
+      color:white;
+      text-align: center;
+    }
+  }
+  .api {
+    width: 100%;
+    border: 1px solid gray;
+    color: dimgray;
+    margin: 10/@base 0;
+    height: 40/@base;
+    line-height: 40/@base;
+    display: flex;
+    justify-content: space-around;
+    .sit {
+      display: inline-block;
+      width: 300/@base;
+      text-align: center;
+      border-right: 1px dashed gray;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+}

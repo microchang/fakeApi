@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <meta name="keywords" content="fakeapi">
+    <meta name="description" content="">
+    <meta name="renderer" content="webkit">
+ 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>FakeApi</title>
+     <!--<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=095ed1a07bfe3b7677a388ff3ae8d1bb"></script>-->
+    <!--<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
+    <style type="text/css">
+        @-webkit-keyframes loading-remote {
+            0% {
+                transform: rotate(0deg)
+            }
+            30% {
+                transform: rotate(360deg)
+            }
+            60% {
+                transform: rotate(360deg)
+            }
+            90% {
+                transform: rotate(0deg)
+            }
+        }
+        
+        @-moz-keyframes loading-remote {
+            0% {
+                transform: rotate(0deg)
+            }
+            30% {
+                transform: rotate(360deg)
+            }
+            60% {
+                transform: rotate(360deg)
+            }
+            90% {
+                transform: rotate(0deg)
+            }
+        }
+        
+        @-o-keyframes loading-remote {
+            0% {
+                transform: rotate(0deg)
+            }
+            30% {
+                transform: rotate(360deg)
+            }
+            60% {
+                transform: rotate(360deg)
+            }
+            90% {
+                transform: rotate(0deg)
+            }
+        }
+        
+        @keyframes loading-remote {
+            0% {
+                transform: rotate(0deg)
+            }
+            30% {
+                transform: rotate(360deg)
+            }
+            60% {
+                transform: rotate(360deg)
+            }
+            90% {
+                transform: rotate(0deg)
+            }
+        }
+        
+        .loading-warp {
+            height: 1000px;
+            width: 100%;
+            position: relative;
+            padding-top: 100px;
+            background-color: #9D344B;
+            text-align: center
+        }
+          
+        .loading-img {
+            height: 200px;
+            width: 80px;
+            bottom: 150px;
+            -webkit-animation: loading-remote 4s infinite;
+            -moz-animation: loading-remote 4s infinite;
+            -o-animation: loading-remote 4s infinite;
+            animation: loading-remote 4s infinite
+        }
+        
+        .loading-text {
+            color: #fff;
+            font-size: 24px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="react-container" style="height:100%">
+        <div class="loading-warp">
+            <p class="loading-text"></p><img class="loading-img" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDMwLjM5MyAzMC4zOTMiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMwLjM5MyAzMC4zOTM7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4Ij4KPGc+Cgk8cGF0aCBkPSJNMTQuNDkxLDE2LjMzNmMwLDAtMy41NTMsMy40NTktNC45MzksNy40MzR2MS4wODRoMTEuMjg5VjIzLjc3Yy0xLjgwMi00LjM4OS00LjkzOS03LjQzNC00LjkzOS03LjQzNEgxNC40OTF6IiBmaWxsPSIjRkZGRkZGIi8+Cgk8cGF0aCBkPSJNMjQuOTExLDQuOTYzVjMuMjU2aDEuNjE4VjBIMy44NjR2My4yNTZoMS42MTl2MS43MDdjMCwyLjYwNSw0LjY3Nyw5LjcyNSw0Ljg5OCwxMC4yMzggICBjLTAuMjE3LDAuNTE0LTQuODk4LDcuNjMxLTQuODk4LDEwLjIyOXYxLjcwM0gzLjg2NHYzLjI2aDIyLjY2NXYtMy4yNmgtMS42MThWMjUuNDNjMC0yLjYwOS00LjY4Mi05LjY4LTQuOTI5LTEwLjIzMiAgIEMyMC4yMjksMTQuNjQzLDI0LjkxMSw3LjU2OCwyNC45MTEsNC45NjN6IE0yMy4yOTEsMjUuNDN2MS43MDNINy4xMDFWMjUuNDNjMC0xLjg3NSw0Ljk2MS05LjI5Nyw0Ljk2MS0xMC4yMzIgICBjMC0wLjk0MS00Ljk2MS04LjM2MS00Ljk2MS0xMC4yMzRWMy4yNTZIMjMuMjl2MS43MDdjMCwxLjg3My01LDkuMjkzLTUsMTAuMjM0QzE4LjI5MSwxNi4xMzMsMjMuMjkxLDIzLjU1NSwyMy4yOTEsMjUuNDN6IiBmaWxsPSIjRkZGRkZGIi8+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+Cgk8Zz4KCTwvZz4KCTxnPgoJPC9nPgoJPGc+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==">
+       </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
