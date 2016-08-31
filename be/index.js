@@ -3,18 +3,19 @@
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import Router from 'koa-router';
-import session from 'koa-session';
+import session from "koa-session2";
 import convert from 'koa-convert';
 import userRouterhandle from './logic/user';
 import teamRouterhandle from './logic/team';
 import apiRouterhandle from './logic/api';
 import authRouterhander from './logic/auth';
-import {addJSON} from './tools/middleware';
-
+import {addJSON,cros} from './tools/middleware';
+import Store from './tools/store';
+import conf from './configs/config';
 const app = new Koa();
 const allRouter = new Router();
 
-app.keys = ['wo_ke_yi_tun_bo_li_er_bu_shang_shen_ti'];
+app.keys =conf.appKey;
 
 //route setter
 allRouter.use('/user', userRouterhandle.routes(), userRouterhandle.allowedMethods());
@@ -32,19 +33,24 @@ app
     const ms = new Date - start;
     console.log(`\x1b[36m<<\x1b[0m [ \x1b[32m${ctx.method}\x1b[0m] -- [\x1b[32m${ctx.url}\x1b[0m] --[\x1b[32m${(new Date()).toString()}\x1b[0m] , ${ms} ms`);
   })
+  .use(cros())
   .use(addJSON())
   .use(bodyParser())
-  .use(convert(session(app)))
+  .use(session({
+    key: conf.session.key,
+    store: new Store(),
+    maxAge:conf.session.maxAge
+  }))
   .use(allRouter.routes())
 
   //404处理-todo
   .use((ctx, next) => {
     ctx.json(404);
-  });
+  })
 
 //错误处理-todo
 app.on('error', function (err) {
-  log.error('server error', err);
+  console.log('server error', err);
 });
 
-app.listen(14014);
+app.listen(conf.port);

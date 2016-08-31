@@ -1,19 +1,16 @@
 import actionVariable from '../actions/actionVariable.js';
 
 const {
-  COMPANY_INFO,
-  SHOW_TIP
+TEAM_LIST,
+  SHOW_TEAM
 } = actionVariable;
 
 const initAppData = {
-  companyInfo: {},
-  tip: {
-    modalIsOpen: false,
-    title: '',
-    content: '',
-    closeBtn: false,
-    closeTime: 3000
-  }
+  teamInfo: {
+    id: '',
+    isShow: false
+  },
+  teamList: []
 };
 
 export function AppData(state = initAppData, action = null) {
@@ -21,15 +18,16 @@ export function AppData(state = initAppData, action = null) {
   let returnStte = {};
 
   switch (action.type) {
-    case COMPANY_INFO:
+
+     case TEAM_LIST:
       returnStte = Object.assign({}, state, {
-        companyInfo: action.data
+        teamList: action.data
       });
       break;
-
-    case SHOW_TIP:
+    
+    case SHOW_TEAM:
       returnStte = Object.assign({}, state, {
-        tip: action.data
+        teamInfo: action.data
       });
       break;
     default:

@@ -1,9 +1,4 @@
-/**
- * Created by mic on 15-12-22.
- */
-/**
- * Created by mic on 15-12-17.
- */
+
 const webpack = require('webpack');
 const path = require('path');
 
@@ -14,9 +9,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/build'),
     publicPath: 'http://XXX.com/',
-    // sourceMapFilename: "[file].map",
     filename: 'app.[hash].js'
-    // filename: "app.js"
   },
 
   module: {

@@ -12,9 +12,10 @@
     "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
     "koa-router": "^7.0.1",
-    "koa-session": "^3.3.1",
+    "koa-session2": "^1.0.8",
     "log4js": "^0.6.38",
-    "mongoose": "^4.5.8"
+    "mongoose": "^4.5.8",
+    "shortid": "^2.2.6"
   },
   "devDependencies": {}
 }

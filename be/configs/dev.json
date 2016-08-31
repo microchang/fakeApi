@@ -1,0 +1,16 @@
+{
+  "name": "dev",
+  "key": "123",
+  "session": {
+    "key": "123",
+    "maxAge": 864000000
+  },
+  "mongo": {
+    "url": "localhost",
+    "port": 27017,
+    "username": "",
+    "password": "",
+    "database": "",
+    "connectStr":"mongodb://localhost:27017/fakeapi"
+  }
+}

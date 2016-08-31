@@ -28,10 +28,17 @@ coverage
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
+
+#build
 fe/build/*.js
 fe/build/*.js.map
 fe/build/*.png
 fe/build/*.jpg
+fe/build/*.svg
+
+#config files
+be/configs/test.json
+be/configs/prod.json
 
 # Dependency directories
 node_modules

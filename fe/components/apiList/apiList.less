@@ -2,40 +2,116 @@
 .fk-api-list {
   font-size: 18px;
   .brief {
-    margin-top: 50/@base;
-    height: 80/@base;
-    line-height: 80/@base;
-    background-color:black;
-
-    .name{
-      color:white;
-
+    // line-height: 80/@base;
+    // background-color:black;
+    .name {
+      margin-top: 50px;
+      position: relative;
+      font-size: 24px;
+      .quote {
+        font-size: 28px;
+        font-weight: 900;
+      }
+      .quote-end {
+        position: absolute;
+        top: 20px;
+      }
+      .des {
+        font-style: oblique;
+        font-size: 16px;
+      }
     }
-    .add{
-      float: right;
-      margin:auto;
-      .size(200/@base,80/@base);
-      background-color: green;
-      color:white;
+    .member {
+      padding-left: 50px;
+      .name {
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        background-color: @warmyellow;
+        color: white;
+        border-radius: 15px;
+        margin: 10px;
+        padding: 0 10px;
+        font-size: 16px;
+        clear: both;
+        &:hover {
+          background-color: @deepblue;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .control {
+    display: flex;
+    justify-content: flex-end;
+    .add {
+
+      .size(200/@base, 40/@base);
+      background-color: @deepblue;
+      line-height: 40/@base;
+      color: white;
       text-align: center;
+      font-size: 16px;
+      border-radius: 5px;
+      box-shadow:  10px 1px 10/@base 1px @div;
+      cursor: pointer;
+       margin: 0 10px 0 0;
     }
   }
   .api {
+    display: flex;
     width: 100%;
-    border: 1px solid gray;
-    color: dimgray;
+    justify-content: space-around;
+    background-color: @background;
+    color: @gray;
     margin: 10/@base 0;
     height: 40/@base;
     line-height: 40/@base;
-    display: flex;
-    justify-content: space-around;
+    box-shadow: 0 5px 10/@base 0 @div;
+    &:hover {
+      background-color: @warmyellow;
+    }
     .sit {
+      flex: 1;
       display: inline-block;
       width: 300/@base;
       text-align: center;
-      border-right: 1px dashed gray;
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
+      .copy {
+        float: left;
+        border: none;
+        .size(30/@base, 30/@base);
+        margin: 5/@base 0 0 0;
+        border-radius: 50%;
+        background-color: @warmyellow;
+        color: @deepblue;
+        cursor: pointer;
+      }
+      .update {
+        margin-right: 20px;
+        color: @deepblue;
+        cursor: pointer;
+      }
+      .del {
+        margin-left: 20px;
+        cursor: pointer;
+        color: red;
+      }
     }
+    .url {
+      flex: 2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+  .title {
+    background-color: @cafeyellow;
+    color: white;
+    &:hover {
+      background-color: @cafeyellow;
+    }
+    // font-size: 20px;
   }
 }

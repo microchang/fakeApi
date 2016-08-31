@@ -1,24 +1,5 @@
 @import "../../styles/mixins/mixins.less";
-html {
-  font-size: 16.5px;
-  height: 100%;
-  a:link {
-    color: @gray;
-  }
-  a:visited {
-    color: @gray;
-  }
-  a {
-    text-decoration: none
-  }
-}
 
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: @background;
-}
 
 .ck-app {
   position: relative;
@@ -26,24 +7,3 @@ body {
   background-color: @background;
 }
 
-body,
-ul,
-ol,
-li,
-h1,
-h2,
-h3,
-h4,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-input {
-  box-shadow: 0 0 0 1px @active;
-    border: none;
-    border-radius: 5px;
-  &:focus {
-    box-shadow: 0 0 5px 1px @active;
-  }
-}

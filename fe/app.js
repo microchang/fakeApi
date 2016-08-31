@@ -1,6 +1,5 @@
-import React from 'react';
-import ReactDom from "react-dom";
-import configureSrore from "./store/store";
+
+import ReactDom from 'react-dom';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import createHashHistory from 'history/lib/createHashHistory';
 import Root from './root';

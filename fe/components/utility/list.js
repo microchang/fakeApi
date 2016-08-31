@@ -14,7 +14,11 @@ export function listDel(num, list) {
     if (i === num) {
       continue;
     }
-    templist.push(list[i]);
+    tempList.push(list[i]);
   }
   return tempList;
 }
+
+export function isArray(o) {  
+  return Object.prototype.toString.call(o) === '[object Array]';   
+} 

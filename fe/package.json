@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.14.0",
     "babel-plugin-transform-runtime": "^6.12.0",
     "babel-runtime": "^6.11.6",
-    "jquery": "^3.1.0",
+    "clipboard": "^1.5.12",
+    "jsoneditor": "^5.5.7",
     "key-mirror": "^1.0.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",

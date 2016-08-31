@@ -6,18 +6,16 @@ class LS {
     if (!window.localStorage) {
       throw new Error('sorry you can not use localStorage here~');
     }
-    if (!window.localStorage.CE_JSON) {
-      console.log('begin use localStorage...');
-      window.localStorage.CE_JSON = '\{\}';
+    if (!window.localStorage.FK_JSON) {
+      window.localStorage.FK_JSON = '\{\}';
     }
   }
   gv(name) {
     this._canIUse();
     if (!name) {
-      console.log('here we return all localStorage.cejson');
-      return JSON.parse(window.localStorage.CE_JSON);
+      return JSON.parse(window.localStorage.FK_JSON);
     }
-    let _this = JSON.parse(window.localStorage.CE_JSON);
+    let _this = JSON.parse(window.localStorage.FK_JSON);
     try {
       return JSON.parse(_this[name]);
     } catch (e) {
@@ -27,42 +25,42 @@ class LS {
   }
   sv(name, value) {
     if (!name || !value) {
-      return console.log('we need a name and value,right?');
+      throw new Error('we need a name and value,right?');
     }
     this._canIUse();
     try {
-      let _this = JSON.parse(window.localStorage.CE_JSON);
+      let _this = JSON.parse(window.localStorage.FK_JSON);
       switch (typeof value) {
-        case 'string':
-        case 'number':
-          _this[name] = value;
-          break;
-        case 'object':
-          _this[name] = JSON.stringify(value);
-          break;
-        default:
-          throw new Error('we need a right value type!');
+      case 'string':
+      case 'number':
+        _this[name] = value;
+        break;
+      case 'object':
+        _this[name] = JSON.stringify(value);
+        break;
+      default:
+        throw new Error('we need a right value type!');
       }
-      window.localStorage.CE_JSON = JSON.stringify(_this);
+      window.localStorage.FK_JSON = JSON.stringify(_this);
     } catch (e) {
-
+      throw new Error('we need a right value type!');
     }
   }
 
   dv(name) {
     if (!name) {
-      return window.localStorage.CE_JSON = '\{\}';
+      return window.localStorage.FK_JSON = '\{\}';
     }
-    let _this = JSON.parse(window.localStorage.CE_JSON);
+    let _this = JSON.parse(window.localStorage.FK_JSON);
     if (typeof name == 'string') {
 
       delete _this[name];
-      window.localStorage.CE_JSON = JSON.stringify(_this);
+      window.localStorage.FK_JSON = JSON.stringify(_this);
     } else if (typeof name == 'object' && name.length) {
       for (let i = 0; i < name.length; i++) {
         delete _this[name[i]];
       }
-      window.localStorage.CE_JSON = JSON.stringify(_this);
+      window.localStorage.FK_JSON = JSON.stringify(_this);
     } else {
       throw new Error('delete action need a string or list!');
     }

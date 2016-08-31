@@ -1,11 +1,14 @@
 @import "../../styles/mixins/mixins.less";
 .fk-team {
-  height: 100%;
-  position: relative;
+  height: 95%;
+  position: absolute;
   font-size: 18px;
+  width: 100%;
+  z-index: 300;
   .warp {
     height: 100%;
-    background-color: @div;
+    width: 100%;
+    background-color: @border;
     opacity: 0.5;
   }
   .body {
@@ -19,7 +22,7 @@
     width: 50%;
     top: -100%;
     left: 25%;
-    box-shadow: 0 0 20px 1px @div;
+    box-shadow: 0 0 20px 1px @border;
     .row {
       width: 100%;
       min-height: 50px;

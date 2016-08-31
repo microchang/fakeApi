@@ -1,13 +1,9 @@
-import {
-  combineReducers
-} from 'redux';
-
-import {AppData} from './app.js';
-
-
-const rootReducer = combineReducers({
-  AppData
-});
+let base = require('./base.json');
+let dev = require('./dev.json');
+let test = require('./test.json');
+let prod = require('./prod.json');
+// import base from './base.json';
+const NODE_ENV = process.env.NODE_ENV || 'dev';
 
 if (typeof Object.assign != 'function') {
   Object.assign = function (target) {
@@ -30,5 +26,17 @@ if (typeof Object.assign != 'function') {
     return target;
   };
 }
+let conf;
+switch (NODE_ENV) {
+case 'dev':
+  conf = Object.assign({}, base, dev);
+  break;
+case 'test':
+  conf = Object.assign({}, base, test);
+  break;
+case 'prod':
+  conf = Object.assign({}, base, prod);
+  break;
+}
 
-export default rootReducer;
+module.exports = conf;

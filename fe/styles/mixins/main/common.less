@@ -33,3 +33,48 @@
 	left: 0;
 	background-color: rgba(0,0,0,.2);
 }
+.hide{
+  display: none !important;
+}
+html {
+  font-size: 16.5px;
+  height: 100%;
+  a:link {
+    color: white;
+  }
+  a:visited {
+    color: white;
+  }
+  a {
+    text-decoration: none
+  }
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: @background;
+}
+
+body,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  box-shadow: 0 0 0 1px @warmyellow;
+    border: none;
+    border-radius: 5px;
+  &:focus {
+    box-shadow: 0 0 5px 1px @warmyellow;
+  }
+}

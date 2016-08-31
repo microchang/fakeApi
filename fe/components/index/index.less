@@ -1,18 +1,60 @@
 @import "../../styles/mixins/mixins.less";
 .fk-index {
-  display: -webkit-flex;
-  display: flex;
-  padding: 10/@base;
-  justify-content:flex-start;
-  flex-wrap:wrap;
-  // margin: 20/@base 0;
-  .team{
-    margin: 20/@base;
-    height: 80/@base;
-    width:   300/@base;
-    font-size: 24/@base;
+  font-size: 20px;
+  padding: 10/@base 10/@base 10/@base 0;
+  background-color: @background;
+  width: 90%;
+  margin: 10px 5% 0 5%;
+  min-height: 600px;
+  box-shadow: 0 3px 10px 1px @div;
+  .title {
+    // width: 50%;
+    margin: 20/@base 0 0 20/@base;
+    height: 50px;
+    line-height: 50px;
+    background-color: @deepblue;
+    color: white;
     text-align: center;
-    line-height: 80/@base;
-    box-shadow: 0 0 5/@base 0 black; 
+    // border-radius: 10px;
+  }
+  .api-list {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    .team {
+      position: relative;
+      margin: 20/@base;
+      height: 160/@base;
+      width: 300/@base;
+      font-size: 24/@base;
+      text-align: center;
+      line-height: 80/@base;
+      box-shadow: 0 3px 10px 1px black;
+      background-color: @warmyellow;
+      p {
+        color: white;
+        background-color: @cafeyellow;
+        border-bottom: 1px solid @cafeyellow;
+      }
+      .control {
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+        height: 40px;
+        width: 50px;
+        font-size: 16px;
+        line-height: 40px;
+        background-color: @deepblue;
+        color: white;
+        cursor: pointer;
+      }
+    }
+    .add {
+      background-color: @deepblue;
+      color: white;
+      line-height: 160/@base;
+      cursor: pointer;
+    }
   }
 }

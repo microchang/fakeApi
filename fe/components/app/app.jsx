@@ -4,9 +4,8 @@ import { bindActionCreators } from 'redux';
 //import {Link} from 'react-router';
 
 import './app.less';
-import LS from '../utility/localStorage.js';
-import Header from '../header/header';
-
+import Header from '../header/header.jsx';
+import Team from '../team/team.jsx';
 function mapStateToProps(state) {
   return state;
 }
@@ -20,19 +19,9 @@ function mapDispatchToProps(dispatch) {
 export class App extends Component {
 
   componentWillMount() {
-    // const user = LS.gv('pinxiuUser');
-    // if (!user && location.pathname != '/login') {
-    //   return location.href = '/login';
-    // }
-
-
 
   }
   componentDidMount() {
-    // if (location.pathname != '/login') {
-    //   const user = LS.gv('pinxiuUser');
-    //   this.props.getCompanyData(user.corpIdList[0]);
-    // }
 
     window.onresize = () => {
       resize();
@@ -53,9 +42,14 @@ export class App extends Component {
 
 
   render() {
+    const {teamInfo} = this.props.AppData;
     return (
       <div className="ck-app">
         <Header />
+        {
+          teamInfo.isShow ?
+            <Team  teamInfo={teamInfo} /> : null
+        }
         {
           this.props.children
         }

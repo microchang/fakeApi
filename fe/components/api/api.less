@@ -1,11 +1,93 @@
 @import "../../styles/mixins/mixins.less";
 .fk-api {
   font-size: 18px;
-  .row{
+  width: 70%;
+  margin-left: 15%;
+  padding: 20px 20px;
+  box-shadow: 0 10px 10/@base 0 @div;
+  .row {
+    display: flex;
     margin: 10px 0;
+    label {
+      width: 100px;
+      text-align: center;
+      line-height: 40px;
+    }
+    input {
+      padding: 0 0 0 10px;
+      flex: 1;
+      height: 40px;
+    }
+    .json-editor{
+      flex:1;
+      input{
+        height: 20px;
+        border:none;
+      }
+    }
+    .json-erea{
+      flex:1
+    }
+    .button{
+      width: 100px;
+      border:none;
+      color: white;
+      background-color: @deepblue;
+    }
   }
   .ck-select {
-    // width: 50%;
-    display: inline-block;
+    flex: 1
+  }
+  .https {
+    .warp {
+      flex: 1;
+      position: relative;
+      .open {
+        display: inline-block;
+        position: absolute;
+        top: 5px;
+        left: 0;
+        width: 50px;
+        height: 30px;
+        background-color: @active;
+      }
+      .close {
+        display: inline-block;
+        position: absolute;
+        top: 5px;
+        left: 50px;
+        width: 50px;
+        height: 30px;
+        background-color: @div;
+      }
+      .chunk {
+        display: inline-block;
+        position: absolute;
+        border: 1px solid @gray;
+        top: 4px;
+        left: 50px;
+        width: 50px;
+        height: 30px;
+        background-color: @gray;
+      }
+    }
+  }
+  .control {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    margin-top: 100px;
+    justify-content: space-around;
+    .submit {
+      width: 200/@base;
+      text-align: center;
+      background-color: @deepblue;
+      color:white;
+    }
+    .quit {
+         width: 200/@base;
+      text-align: center;
+      height: 40px;
+    }
   }
 }

@@ -1,0 +1,16 @@
+{
+  "name":"base",
+  "appKey":"123",
+  "port":14014,
+  "session":{
+    "key":"123",
+    "maxAge":864000000
+  },
+  "mongo":{
+    "url":"",
+    "port":"",
+    "username":"",
+    "password":"",
+    "database":""
+  }
+}

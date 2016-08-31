@@ -1,6 +1,4 @@
-.animation(@key;
-@duration;
-) {
+.animation(@key;@duration;) {
   -webkit-animation: @key @duration;
   -moz-animation: @key @duration;
   -ms-animation: @key @duration;
@@ -66,7 +64,7 @@
   backface-visibility: hidden;
 }
 
-.cl-shake(@delay) {
+.fk-shake(@delay) {
   -moz-animation: shake-left-right 0.2s @delay infinite;
   /* Firefox */
   -webkit-animation: shake-left-right 0.2s @delay infinite;
@@ -75,7 +73,7 @@
   animation: shake-left-right 0.2s @delay infinite;
 }
 
-.cl-3d {
+.fk-3d {
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -238,7 +236,6 @@
   85%{
      top: 25%;
     transform: rotate(0);
-     
   }
 
   90%{
