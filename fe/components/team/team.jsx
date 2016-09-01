@@ -22,6 +22,7 @@ export class Team extends Component {
     this.quit = this.quit.bind(this);
     this.saveTeam = this.saveTeam.bind(this);
     this.inputChange = this.inputChange.bind(this);
+    this.addUser = this.addUser.bind(this);
 
     this.state = {
       isNew: true,
@@ -30,6 +31,7 @@ export class Team extends Component {
       teamMember: [],
       title: '',
       des: '',
+      currentTeam:null
     };
   }
 
@@ -68,12 +70,14 @@ export class Team extends Component {
           isNew: false,
           title: currentTeam.title,
           des: currentTeam.des,
-          teamMember: result.data
+          teamMember: result.data,
+          currentTeam:currentTeam
         });
       });
     } else {
       this.setState({
-        teamMember: [LS.gv('user')]
+        teamMember: [LS.gv('user')],
+        currentTeam:currentTeam
       });
     }
 
@@ -142,6 +146,22 @@ export class Team extends Component {
 
   }
 
+  addUser() {
+    const email = document.getElementById('addMember').value;
+    ajax({
+      url: 'user/email/' + encodeURIComponent(email),
+    }).then(result => {
+      if (!result.code) {
+        let teamMember = this.state.teamMember;
+        teamMember.push(result.data);
+        this.setState({
+          teamMember: teamMember
+        });
+        document.getElementById('addMember').value = '';
+      }
+    });
+  }  
+  
   componentWillMount() {
   }
 
@@ -178,7 +198,7 @@ export class Team extends Component {
 
           <div className='row'>
             <label htmlFor="team-des">添加成员：</label>
-            <input className='add-member' placeholder='输入成员邮箱' type="text" name='team-des'/>
+            <input className='add-member' placeholder='输入成员邮箱' id='addMember' type="text" name='user'/>
             <input className='add-member-btn' type="button" onClick={this.addUser} value='添加'/>
           </div>
 

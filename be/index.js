@@ -15,7 +15,7 @@ import conf from './configs/config';
 const app = new Koa();
 const allRouter = new Router();
 
-app.keys =conf.appKey;
+app.keys =[conf.appKey];
 
 //route setter
 allRouter.use('/user', userRouterhandle.routes(), userRouterhandle.allowedMethods());

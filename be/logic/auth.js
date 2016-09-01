@@ -52,7 +52,9 @@ authhandle.post('/register', async (ctx, next) => {
   
   saveresult.password = '';
   console.log(saveresult);
+  ctx.session.user = {};
   ctx.session.user = saveresult;
+  console.log(ctx.session.user);
   ctx.json(saveresult);
 });
 /**
@@ -76,7 +78,6 @@ authhandle.post('/login', async (ctx, next) => {
     email: email,
     password: sha256Pass
   }, {password:0}).catch(e => {
-    console.log('e');
     console.log(e);
   });
   if (users.length === 0) {
@@ -91,13 +92,6 @@ authhandle.post('/login', async (ctx, next) => {
 
 
 
-
-
-
-
-
-
-/*  微信浏览器js-sdk授权-end */
 
 export default authhandle;
 

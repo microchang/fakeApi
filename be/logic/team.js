@@ -90,6 +90,39 @@ teamRouterhandle.put('/:teamId/user/:addUserId', async (ctx, next) => {
 });
 
 
+
+
+/**
+ *通过email给团队添加成员
+ *
+ */
+teamRouterhandle.put('/:teamId/email/:email', async (ctx, next) => {
+  const {user} = ctx.session;
+  const {teamId, email} = ctx.params;
+  const team = await TeamModel.findById(teamId);
+  const addUser = await UserModel.finOne({
+    email: email
+  });
+  if (!team || !addUser) {
+    return ctx.json(40004);
+  }
+  if (team.memberIds[0] !== user._id) {
+    return ctx.json(40003);
+  }
+  const addUserId = addUser._id;
+  if (team.memberIds.join(',').indexOf(addUserId) > -1) {
+    return ctx.json('该用户已经在此团队中');
+  }
+
+  team.updateTime = Date.now();
+  team.memberIds.push(addUserId);
+  addUser.teamsId.push(teamId);
+
+  const teamSaveResult = await team.save();
+  const userSaveResult = await addUser.save();
+  ctx.json(team);
+});
+
 /**
  *修改团队信息
  *貌似……和修改成员的功能重复了？

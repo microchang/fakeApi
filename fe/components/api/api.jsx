@@ -68,7 +68,7 @@ export class Api extends Component {
           des: result.data.des,
           isHttps: result.data.isHttps,
           path: result.data.path,
-          method: result.data.method,
+          method: result.data.method+'',
           content: JSON.parse(result.data.content),
           updateId: result.data.updateId,
           createTime: result.data.createTime,
@@ -94,6 +94,11 @@ export class Api extends Component {
     if (isEditorContent) {
       content = this.state.editor.get();
     }
+
+    if (!title || !path) {
+      return;
+    }
+
     if (_id) {
       ajax({
         url: 'api/' + _id,
@@ -110,6 +115,14 @@ export class Api extends Component {
         this.context.router.goBack();
       });
     } else {
+      const {teamList} = this.props.AppData;
+      let teamCode = '';
+      for (let i = 0; i < teamList.length; i++){
+        if (teamList[i]._id === teamId) {
+          teamCode = teamList[i].code;
+          break;
+        }
+      }
       ajax({
         url: 'api/team/' + teamId,
         method: 'post',
@@ -118,6 +131,7 @@ export class Api extends Component {
           des: des,
           isHttps: isHttps,
           path: path,
+          teamCode:teamCode,
           method: method,
           content: content
         }
@@ -128,7 +142,7 @@ export class Api extends Component {
   }
 
   randPath() {
-    let randPathString = 'x' + Math.random().toString(36).substr(2);
+    let randPathString = 'x' + Math.random().toString(36).substr(4);
     this.setState({
       path: randPathString
     });
@@ -157,7 +171,6 @@ export class Api extends Component {
     } catch (e) {
 
     }
-
   }
 
   selectChange(e) {
@@ -186,7 +199,7 @@ export class Api extends Component {
       { value: '8', label: 'TRACE' },
       { value: '9', label: 'PATCH' }
     ];
-    const {title, path,teamId, isHttps, method, des, isEditorContent, content} = this.state;
+    const {title, path, teamId, isHttps, method, des, isEditorContent, content} = this.state;
     const httpsStyle = isHttps ? '50px' : '0px';
     return (
       <div className='fk-api'>
@@ -237,7 +250,7 @@ export class Api extends Component {
 
         <div className='control'>
           <input className='submit' onClick={this.submitData} type ="button" value ="保存" />
-          <Link to={'/team/'+teamId}>
+          <Link to={'/team/' + teamId}>
             <input className='quit' type ="button" value ="取消" />
           </Link>
         </div>

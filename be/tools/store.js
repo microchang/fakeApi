@@ -19,6 +19,8 @@ export default class MongoStore extends Store {
     if (!opts.sid) {
       opts.sid = this.getID(24);
     }
+    console.log('session');
+    console.log(session);
     opts.svalue = JSON.stringify(session);
     let newSession = new sessionModel(opts);
     await newSession.save();

@@ -8,7 +8,7 @@ module.exports = {
   entry: ['./app.js'],
   output: {
     path: path.join(__dirname, '/build'),
-    publicPath: 'http://XXX.com/',
+    publicPath: 'http://obqkrorcs.bkt.clouddn.com/',
     filename: 'app.[hash].js'
   },
 

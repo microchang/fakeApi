@@ -21,10 +21,22 @@ userRouterhandle.get('/teams', async (ctx, next) => {
     return ctx.json(40003);
   }
   const {teamsId} = user;
-  console.log(user);
   const teamList = await TeamModel.find({ _id: { "$in": teamsId } });
   ctx.json(teamList);
 });
+
+
+userRouterhandle.get('/email/:email', async (ctx, next) => {
+  const {email} = ctx.params;
+  console.log(email);
+  const user = await UserModel.findOne({
+    email: email
+  });
+  if (!user) {
+    return ctx.json(40004);
+  }
+  ctx.json(user);
+})
 
 /**
  *获取很多user的信息

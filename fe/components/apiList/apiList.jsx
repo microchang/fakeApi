@@ -76,6 +76,7 @@ export class ApiList extends Component {
       });
     });
     Promise.all([getApiList, getMembers]).then(result => {
+      console.log(result);
       this.setState({
         apiList: result[0],
         member: result[1],
@@ -108,12 +109,17 @@ export class ApiList extends Component {
   }
 
   render() {
-    const {apiList, team, member} = this.state;
+    let {apiList, team, member} = this.state;
+    apiList = apiList.sort();
     const httpList = ['ALL', 'GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'];
     return (
       <div className='fk-api-list'>
+        
         <div className='brief'>
-          <p className='name'> {team.title}： <span className='quote'>“</span ><span className='des'>  {team.des} </span> <span className='quote '>”</span></p>
+          <p className='name'> {team.title}</p>
+          <p className='des'>
+          {team.des}
+          </p>
           <p className='member'>团队成员：{
             member.map((member, key) => {
               return <span className='name' key={key}>
@@ -122,6 +128,7 @@ export class ApiList extends Component {
             })
           }</p>
         </div>
+
         <div className='control'>
           <Link to={'/team/' + team._id + '/api/new'}>
             <p className='add'>添加新的api</p>
@@ -139,10 +146,12 @@ export class ApiList extends Component {
 
           {
             apiList.map((api, key) => {
+              let url = api.isHttps ? 'https://' : 'http://';
+              url = url + 'api.llchangll.com/api/r/' + team.code +'/'+ api.path;
               return <div className='api' key={key}>
                 <span className='sit'>{httpList[api.method]}</span>
                 <span className='sit'>{api.title}</span>
-                <span className='sit url' ><button className='copy' data-clipboard-action="copy" data-clipboard-text={api.path}>贴</button>{api.path}</span>
+                <span className='sit url' ><button className='copy' data-clipboard-action="copy" data-clipboard-text={url}>贴</button>{url}</span>
                 <span className='sit'>{api.updateTime.toLocaleString() }</span>
                 <span className='sit'><Link to={'/team/' + team._id + '/api/' + api._id} ><span className='update'>修改</span></Link>  | <span onClick={this.delApi} className='del' data-id={api._id}>删除</span></span>
               </div>;

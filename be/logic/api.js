@@ -50,35 +50,35 @@ apiRouterhandle.put('/:apiId', async (ctx, next) => {
   if (user.teamsId.toString().indexOf(api.teamId) < 0) {
     return ctx.json(40003);
   }
-   try {
-    content = JSON.stringify(content);
-  } catch (e) {
-    return ctx.json(40001);
-  }
-  const updateResult = await apiModel.update({
-    _id: apiId
-  }, {
-      title: title,
-      des: des,
-      method: method,
-      isHttps: isHttps,
-      path: path,
-      content: content,
-      updateId: user._id
-    });
-  ctx.json();
-});
-
-apiRouterhandle.post('/team/:teamId', async (ctx, next) => {
-  let {title, des, method, isHttps, path, content} = ctx.request.body;
-  const {teamId} = ctx.params;
-  const {user} = ctx.session;
   try {
     content = JSON.stringify(content);
   } catch (e) {
     return ctx.json(40001);
   }
-  console.log(content);
+
+  api.title = title;
+  api.des = des;
+  api.method = method;
+  api.isHttps = isHttps;
+  api.path = path;
+  api.content = content;
+  api.updateId = user._id;
+  await api.save();
+  ctx.json();
+});
+
+apiRouterhandle.post('/team/:teamId', async (ctx, next) => {
+  let {title, des, method, isHttps, path, content,teamCode} = ctx.request.body;
+  const {teamId} = ctx.params;
+  const {user} = ctx.session;
+  if (!teamId) {
+    return crx.json(40001);
+  }
+  try {
+    content = JSON.stringify(content);
+  } catch (e) {
+    return ctx.json(40001);
+  }
   let newApi = new apiModel({
     title: title,
     des: des,
@@ -87,10 +87,35 @@ apiRouterhandle.post('/team/:teamId', async (ctx, next) => {
     path: path,
     content: content,
     teamId: teamId,
+    teamCode:teamCode,
     updateId: user._id
   });
   await newApi.save();
+  console.log(newApi);
   ctx.json(newApi);
 });
+
+apiRouterhandle.all('*', async (ctx, next) => {
+
+  let url = ctx.originalUrl.split('/');
+  url=url.slice(1, url.length);
+  if (url[0] !== 'api' || url[1] !== 'r') {
+    return await next();
+  }
+  const path = url.slice(3, url.length).join('/');
+  const apis = await apiModel.find({
+    teamCode: url[2],
+    path: path
+  });
+  if (apis.length === 0) {
+    return ctx.json(40004);
+  }
+  const httpList = ['ALL', 'GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'];
+  console.log(ctx);
+  if (apis[0].method && ctx.request.method.toUpperCase() !== httpList[apis[0].method]) {
+    return ctx.json('HTTP方式不相配');
+  }
+  ctx.body = apis[0].content;
+})
 
 export default apiRouterhandle;

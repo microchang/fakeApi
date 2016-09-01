@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import './header.less';
 import LS from '../utility/localStorage.js';
 import ajax from '../utility/ajax.js';
+import logo from './logo.png';
 function mapStateToProps(state) {
   return state;
 }
@@ -56,7 +58,11 @@ export class Header extends Component {
     const menuClass = this.state.showMenu ? 'logout' : 'hide logout';
     return (
       <div className='fk-header'>
-        <span className='title'> 首页 </span>
+        <Link to='/'>
+        <img src={logo} alt=""/>
+        
+        </Link>
+        <span className='title'>  </span>
         <span className='name' onClick={this.tiggleMenu}>{this.state.name}</span>
         <span className={menuClass} onClick={this.logout}>登出</span>
       </div>
