@@ -6,12 +6,10 @@ const secret = 'noppsayhammer';
 
 authhandle.get('/test', (ctx, next) => {
   ctx.session.user = 'sdfsdf';
-  console.log(ctx.session);
   ctx.json('test');
 });
 
 authhandle.get('/test2', (ctx, next) => {
-  console.log(ctx.session);
   ctx.json('test2');
 });
 
@@ -51,10 +49,8 @@ authhandle.post('/register', async (ctx, next) => {
   let saveresult = await newUser.save();
   
   saveresult.password = '';
-  console.log(saveresult);
   ctx.session.user = {};
   ctx.session.user = saveresult;
-  console.log(ctx.session.user);
   ctx.json(saveresult);
 });
 /**

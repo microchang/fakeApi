@@ -91,7 +91,6 @@ apiRouterhandle.post('/team/:teamId', async (ctx, next) => {
     updateId: user._id
   });
   await newApi.save();
-  console.log(newApi);
   ctx.json(newApi);
 });
 
@@ -111,7 +110,6 @@ apiRouterhandle.all('*', async (ctx, next) => {
     return ctx.json(40004);
   }
   const httpList = ['ALL', 'GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'];
-  console.log(ctx);
   if (apis[0].method && ctx.request.method.toUpperCase() !== httpList[apis[0].method]) {
     return ctx.json('HTTP方式不相配');
   }

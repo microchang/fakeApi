@@ -28,7 +28,6 @@ userRouterhandle.get('/teams', async (ctx, next) => {
 
 userRouterhandle.get('/email/:email', async (ctx, next) => {
   const {email} = ctx.params;
-  console.log(email);
   const user = await UserModel.findOne({
     email: email
   });

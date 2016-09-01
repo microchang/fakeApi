@@ -7,7 +7,7 @@ export default class MongoStore extends Store {
   }
 
   async get(sid) {
-    let session = await sessionModel.findOne(sid);
+    let session = await sessionModel.findById(sid);
     if (!session) {
       return {};
     }
@@ -19,8 +19,6 @@ export default class MongoStore extends Store {
     if (!opts.sid) {
       opts.sid = this.getID(24);
     }
-    console.log('session');
-    console.log(session);
     opts.svalue = JSON.stringify(session);
     let newSession = new sessionModel(opts);
     await newSession.save();

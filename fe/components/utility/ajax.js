@@ -4,8 +4,8 @@ import LS from './localStorage.js';
 export default function ajax(opts) {
 
   let _opts = opts;
-  let _data = opts.data || {};
-  let _url = _opts.url.indexOf('http') < 0 ? 'http://localhost:14014/' + opts.url : opts.url;
+  let _url = _opts.url.indexOf('http') < 0   ? 'http://api.llchangll.com/' + opts.url : opts.url;
+  // let _url = _opts.url.indexOf('http') < 0   ? 'http://localhost:14014/' + opts.url : opts.url;
 
   _opts.url = _url;
   _opts.method = opts.method || 'get';
