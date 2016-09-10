@@ -7,7 +7,9 @@ export default class MongoStore extends Store {
   }
 
   async get(sid) {
-    let session = await sessionModel.findById(sid);
+    let session = await sessionModel.findOne({
+      sid:sid
+    });
     if (!session) {
       return {};
     }
